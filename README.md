@@ -8,6 +8,16 @@ I first tried the command ‘python -m tellopy.examples.simple_takeoff’ but it
 We then had to figure out what was wrong with the code and test to see why the controller would not connect. The controller connected to my laptop for sure because when you go to check in USB, it shows that a controller is connected to my laptop. It shows the name and all the information about it. We tried changing the elif statements to include the names listed in the information on my laptop, but nothing was working and the controller still wasn’t connecting. We had no idea why. I googled a bunch of things trying to figure out how to connect the controller and we tried many different ideas suggested on the internet. 
 Eventually, once looking at more of the code in depth other than just the try block and elif statements, I realized that the except statement stated if there was any error, it would just pass the rest of the code and not look at it at all. The elif statements that we were changing were not getting looked at at all. By debugging using print statements, I figured out that there was an error with the line ‘js = pygame.joystick.Joystick(0)’ and the error was ‘pygame.error: Invalid joystick device number’. I tried different numbers but I wasn’t exactly sure what it was supposed to be. I googled the error but I tried many of the suggestions, and none of them worked. We googled many different questions and searched for solutions, but could not find any. I saw a lot of errors with people using MacBooks and that some things weren’t working for them, so I feel like that could be an issue. Something that the new MacBooks have different builds or different features that don’t work correctly with the programs and what we needed. In the end, we could not get the drone to fly with a controller after trying many different things. We got simple takeoff to work, but not the controller.
 
+Stage 2
+
+First we wrote down what kind of columns we wanted for the tables. We created the FlightData table first, which will contain all the flights taken by the pilots. There will be the pilot by first and last name which will be a String, then the pilot’s academic department which is a String. The partition key will be ‘success’ noting whether the flight was successful or not, and the sort key will be the flight time starting from smallest to largest. The rest of the attributes are as follows:
+checkpoints - which checkpoint out of 4 has the pilot made it to (number)
+success - if they make it to the target or not (String)
+final landing point - what the coordinates are of where they end up (number)
+controller type - what kind of controller they used (String)
+Then we decided to implement the main table into DynamoDB. We went to the AWS Academy Canvas page, then went to AWS Academy Learner Lab. Then we started the lab, and accessed the AWS Management Console. We then went to the DynamoDB page, to create a table. We clicked create a table, and for the table details it asked for the table name, partition key, sort key, and table settings. For the table name we called it “FlightData”. The partition key we named “Pilot” of type String, and the sort key was “Academic Department” also of type String. We kept the table settings to the default settings, then created the table. Once the status changed to active, we clicked in the FlightData table and then under actions clicked create item. Then we proceeded to create all the items listed above. For specific values we made up mock data to insert into the table. We wrote code to insert flight data to our table in DynamoDB, as seen in insert.py in our github repository. Unfortunately we could not test to see if this code actually does insert data into our tables because we were unable to get the drone to fly with the controller after several attempts.
+
+
 Machine 1: 13 inch MacBook Air (M1, 2020)
 Initial Version: macOS 11.3.1
 After Updating: macOS Monterey 12.6
@@ -17,4 +27,6 @@ Machine 2: MacBook Pro (15-inch, 2019)
 macOS Monterey 12.6
 2.6 GHz 6_Core Intel Core i7
 
+Machine 3: Legion Y7000P-1060
+Intel Core i7-8750H 6 x 2.2 - 4.1 GHz
 *Command outputs were the same for both machines*
