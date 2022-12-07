@@ -13,11 +13,13 @@ Stage 2
 DynamoDB Table
 
 First we wrote down what kind of columns we wanted for the tables. We created the FlightData table first, which will contain all the flights taken by the pilots. There will be the pilot by first and last name which will be a String, then the pilot’s academic department which is a String. The partition key will be ‘success’ noting whether the flight was successful or not, and the sort key will be the flight time starting from smallest to largest. The rest of the attributes are as follows:
+
 checkpoints - which checkpoint out of 4 has the pilot made it to (number)
 success - if they make it to the target or not (String)
 final landing point - what the coordinates are of where they end up (number)
 controller type - what kind of controller they used (String)
-Then we decided to implement the main table into DynamoDB. We went to the AWS Academy Canvas page, then went to AWS Academy Learner Lab. Then we started the lab, and accessed the AWS Management Console. We then went to the DynamoDB page, to create a table. We clicked create a table, and for the table details it asked for the table name, partition key, sort key, and table settings. For the table name we called it “FlightData”. The partition key we named “Pilot” of type String, and the sort key was “Academic Department” also of type String. We kept the table settings to the default settings, then created the table. Once the status changed to active, we clicked in the FlightData table and then under actions clicked create item. Then we proceeded to create all the items listed above. For specific values we made up mock data to insert into the table. We wrote code to insert flight data to our table in DynamoDB, as seen in insert.py in our github repository. Unfortunately we could not test to see if this code actually does insert data into our tables because we were unable to get the drone to fly with the controller after several attempts.
+
+Then we decided to implement the main table into DynamoDB. We went to the AWS Academy Canvas page, then went to AWS Academy Learner Lab. Then we started the lab, and accessed the AWS Management Console. We then went to the DynamoDB console, to create a table. We clicked create a table, and for the table details it asked for the table name, partition key, sort key, and table settings. For the table name we called it “FlightData”. The partition key we named “Pilot” of type String, and the sort key was “Flight Time” also of type String. We kept the table settings to the default settings, then created the table. Once the status changed to active, we clicked in the FlightData table and then under actions clicked create item. Then we proceeded to create all the items listed above. For specific values we made up mock data to insert into the table. We wrote code to insert flight data to our table in DynamoDB, as seen in insert.py in our github repository. Unfortunately we could not test to see if this code actually does insert data into our tables because we were unable to get the drone to fly with the controller after several attempts.
 
 Tutorial/Issues
 
@@ -35,6 +37,8 @@ Machine 2: MacBook Pro (15-inch, 2019)
 macOS Monterey 12.6
 2.6 GHz 6_Core Intel Core i7
 
+
+*Command outputs were the same for both machines*
+
 Machine 3: Legion Y7000P-1060
 Intel Core i7-8750H 6 x 2.2 - 4.1 GHz
-*Command outputs were the same for both machines*
