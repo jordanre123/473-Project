@@ -12,7 +12,7 @@ Stage 2
 
 DynamoDB Table
 
-First we wrote down what kind of columns we wanted for the tables. We created the FlightData table first, which will contain all the flights taken by the pilots. There will be the pilot by first and last name which will be a String, then the pilot’s academic department which is a String. The partition key will be ‘success’ noting whether the flight was successful or not, and the sort key will be the flight time starting from smallest to largest. The rest of the attributes are as follows:
+First we wrote down what kind of columns we wanted for the tables. We created the FlightData table first, which will contain all the flights taken by the pilots. There will be the pilot by first and last name which will be a String, then the pilot’s academic department which is a String. The partition key will be ‘success’ noting whether the flight was successful or not, and the sort key will be the flight time starting from smallest to largest. We were thinking that we could manually insert into the string of the time column, noting whether it was a test flight or actual flight, followed by unique digits included in the string. The rest of the attributes are as follows:
 
 checkpoints - which checkpoint out of 4 has the pilot made it to (number)  
 success - if they make it to the target or not (String)  
